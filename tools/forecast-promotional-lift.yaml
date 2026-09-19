@@ -1,0 +1,32 @@
+annotations:
+  cost: none
+  read_only: true
+  requires_confirmation: false
+description: Model expected revenue lift and cross-product margin cannibalization.
+input_schema:
+  additionalProperties: false
+  properties:
+    baseline_velocity:
+      type: number
+    category:
+      type: string
+    discount_percentage:
+      type: number
+  required:
+  - discount_percentage
+  - baseline_velocity
+  type: object
+name: forecast-promotional-lift
+output_schema:
+  additionalProperties: false
+  properties:
+    confidence:
+      type: number
+    data:
+      type: string
+    status:
+      type: string
+  required:
+  - status
+  - data
+  type: object

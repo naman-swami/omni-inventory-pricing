@@ -1,0 +1,36 @@
+annotations:
+  cost: none
+  read_only: true
+  requires_confirmation: false
+description: Calculate Economic Order Quantity and reorder trigger point.
+input_schema:
+  additionalProperties: false
+  properties:
+    annual_demand:
+      type: number
+    holding_cost_rate:
+      type: number
+    lead_time_days:
+      type: number
+    order_cost:
+      type: number
+  required:
+  - annual_demand
+  - holding_cost_rate
+  - order_cost
+  - lead_time_days
+  type: object
+name: compute-eoq-reorder
+output_schema:
+  additionalProperties: false
+  properties:
+    confidence:
+      type: number
+    data:
+      type: string
+    status:
+      type: string
+  required:
+  - status
+  - data
+  type: object

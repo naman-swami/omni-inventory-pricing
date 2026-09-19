@@ -1,0 +1,6 @@
+spec_version: "0.1.0"
+name: omni-inventory-pricing
+version: "0.1.0"
+description: "Real-time price elasticity modeling, demand forecasting, and inventory replenishment agent balancing gross margins and stockout prevention."
+model:
+  preferred: llama-3.3-70b-versatile

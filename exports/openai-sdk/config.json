@@ -1,0 +1,28 @@
+{
+  "name": "omni-inventory-pricing",
+  "instructions": "You are omni-inventory-pricing. Optimize retail product pricing curves, calculate economic order quantities (EOQ), and prevent inventory stockouts across fulfillment hubs.",
+  "model": "gpt-4o",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "calculate-price-elasticity",
+        "description": "Compute price elasticity of demand coefficient for target product SKU."
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "compute-eoq-reorder",
+        "description": "Calculate Economic Order Quantity and reorder trigger point."
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "forecast-promotional-lift",
+        "description": "Model expected revenue lift and cross-product margin cannibalization."
+      }
+    }
+  ]
+}
