@@ -55,7 +55,7 @@ omni-inventory-pricing/
 │   └── retail_pricing_economics.md  # Economic principles documentation
 ├── tests/
 │   └── test_agent.py                # Pricing and inventory test suite
-├── main.py                          # E-commerce CLI
+├── retail_pricing.py                          # E-commerce CLI
 └── requirements.txt
 ```
 
@@ -66,5 +66,5 @@ omni-inventory-pricing/
 pytest tests/ -v
 
 # Optimize sample SKU catalog
-python main.py --demo
+python retail_pricing.py --demo
 ```

@@ -1,0 +1,3 @@
+{
+  "elasticity_tiers": {"elastic": "< -1.5", "unit_elastic": "-1.0", "inelastic": "> -0.8"}
+}
