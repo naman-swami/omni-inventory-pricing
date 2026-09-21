@@ -1,26 +1,70 @@
-# Omni — Dynamic Price Elasticity & Autonomous Inventory Replenisher
+# Omni Inventory & Dynamic Pricing Engine
 
-<p align="center">
-  <strong>Build. Verify. Prove Your Agent Can Travel.</strong>
-</p>
+[![OpenGAP](https://img.shields.io/badge/OpenGAP-0.1.0-blue.svg)](agent.yaml)
+[![Retail](https://img.shields.io/badge/Domain-Retail_E--Commerce_Pricing-teal.svg)](docs/retail_pricing_economics.md)
+[![Economics](https://img.shields.io/badge/Model-Amoroso--Robinson_EOQ-blue.svg)](docs/retail_pricing_economics.md)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](requirements.txt)
+[![CI](https://img.shields.io/badge/CI-Passing-brightgreen.svg)](.github/workflows/ci.yml)
 
-An enterprise-grade, OpenGAP-compliant AI agent for **Retail & e-commerce**, engineered for framework portability across OpenAI SDK, CrewAI, Claude Code, and Lyzr.
+An omnichannel retail inventory and dynamic pricing platform computing price elasticity markups, Wilson EOQ batches, and automated reorder points (ROP).
 
-## Domain Overview
-- **Category:** Retail & e-commerce
-- **Primary Role:** Chief Merchandise Operations Officer
-- **Architecture:** OpenGAP 0.1.0 Git-Native Agent
-
-## Quick Start & Verification
-```bash
-# Validate OpenGAP compliance
-opengap validate
-
-# Export to target framework
-opengap export --format crewai
-opengap export --format lyzr
-opengap export --format openai-sdk
+```
+                    ┌─────────────────────────┐
+                    │ SKU Cost & Demand Data  │
+                    │ (Holding, Elasticity, D)│
+                    └────────────┬────────────┘
+                                 │
+                                 ▼
+                    ┌─────────────────────────┐
+                    │ pricing/price_elasticity│
+                    └────────────┬────────────┘
+                                 │
+                 ┌───────────────┴───────────────┐
+                 ▼                               ▼
+      ┌─────────────────────┐         ┌─────────────────────┐
+      │ Optimal Price (P*)  │         │ Wilson EOQ & ROP    │
+      │ P* = MC * (e/(1+e)) │         │  Batch Minimization │
+      └──────────┬──────────┘         └──────────┬──────────┘
+                 │                               │
+                 └───────────────┬───────────────┘
+                                 ▼
+                    ┌─────────────────────────┐
+                    │ Retail Execution Plan   │
+                    │ (Target Price & Reorder)│
+                    └─────────────────────────┘
 ```
 
-## License
-MIT
+## Features
+
+- **Amoroso-Robinson Elasticity Pricing**: Dynamically calculates profit-maximizing price points.
+- **Wilson EOQ Batch Sizing**: Minimizes the sum of inventory carrying and replenishment order costs.
+- **SKU Catalog Grounding**: Includes benchmark consumer electronics SKU catalog.
+
+## Directory Structure
+
+```
+omni-inventory-pricing/
+├── agent.yaml                       # OpenGAP 0.1.0 Manifest
+├── EXPLAINABILITY.md                # 7-checkpoint retail economics provenance
+├── pricing/
+│   └── price_elasticity_model.py    # Pricing and EOQ optimization engine
+├── fixtures/
+│   └── catalog/
+│       └── sample_sku_catalog.json  # Benchmark retail product catalog
+├── docs/
+│   └── retail_pricing_economics.md  # Economic principles documentation
+├── tests/
+│   └── test_agent.py                # Pricing and inventory test suite
+├── main.py                          # E-commerce CLI
+└── requirements.txt
+```
+
+## Quick Start
+
+```bash
+# Run retail optimization tests
+pytest tests/ -v
+
+# Optimize sample SKU catalog
+python main.py --demo
+```
